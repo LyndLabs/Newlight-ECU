@@ -16,5 +16,5 @@ Current code can be found under `main.cpp`.
 ## Timesheet
 #### Jun 27
 *3 hrs*
-- Implemented Purging State Machine
+- Implemented PURGING State Machine
 - Set up STM32H7 IDE

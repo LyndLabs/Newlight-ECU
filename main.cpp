@@ -47,9 +47,9 @@ struct StateNode {
 };
 
 
-// MAP States to nodes
+// PURGE
 using StateGraph = std::map<StateType, StateNode>;
-StateGraph buildStateGraph() {
+StateGraph buildPurgeGraph() {
     return {
         {StateType::CheckSystems,       {StateType::CheckSystems,     -1,           StateType::Open,        StateType::Reboot}},
         {StateType::Open,               {StateType::Open,             IGS01,        StateType::Open,        StateType::End}},
@@ -71,6 +71,11 @@ StateGraph buildStateGraph() {
         {StateType::Shutdown,           {StateType::Shutdown,         -1,           StateType::End,         StateType::End}},
     };
 }
+
+// START 
+// NORMAL SHUTOFF
+// EMERG SHUTOFF
+// MONITOR
 
 void runStateMachine(const StateGraph& graph) {
     // iterate from beginning to end of statetypes
@@ -98,7 +103,7 @@ void runStateMachine(const StateGraph& graph) {
 }
 
 int main() {
-    auto graph = buildStateGraph();
+    auto graph = buildPurgeGraph();
     runStateMachine(graph);
     return 0;
 }
